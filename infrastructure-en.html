@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>برامج سيفتى — اتصل بنا</title>
+<title>Infrastructure</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -143,33 +143,8 @@ img{ max-width:100%; height:auto; display:block; }
   color:var(--text-dark);
   margin-bottom:18px;
 }
-.main-card h2{ font-size:22px; margin-bottom:12px; }
+.main-card h3{ font-size:22px; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
 .main-card p{ font-size:16px; margin-bottom:18px; line-height:1.6; color:var(--muted-dark); }
-
-/* contact form */
-#contactForm{ display:flex; flex-direction:column; gap:12px; margin-top:16px; }
-#contactForm input,
-#contactForm textarea{
-  padding:12px;
-  border-radius:8px;
-  border:1px solid #ddd;
-  font-size:15px;
-  font-family: 'Cairo', Tahoma, sans-serif;
-}
-#contactForm button{
-  background:var(--accent1);
-  color:white;
-  border:none;
-  border-radius:8px;
-  padding:12px;
-  cursor:pointer;
-  font-weight:700;
-  font-size:16px;
-  transition: background 0.2s;
-}
-#contactForm button:hover{
-  background:var(--accent2);
-}
 
 /* footer */
 .footer{ text-align:center; color:rgba(255,255,255,0.6); margin-top:16px; font-size:13px; }
@@ -186,38 +161,38 @@ img{ max-width:100%; height:auto; display:block; }
 <body>
   <div class="container">
 
-    <!-- header -->
+    <!-- Header -->
     <header class="header">
       <div class="brand">
         <div class="logo">
           <img src="images/Logo.png" alt="Safety Programs Logo">
         </div>
         <div>
-          <h1>برامج سيفتى</h1>
-          <p>حلول ذكية لإدارة المشاريع والسلامة</p>
+          <h1>Safety Programs</h1>
+          <p>Smart Solutions for Project & Safety Management</p>
         </div>
       </div>
 
       <!-- hamburger (mobile) -->
-      <button class="hamburger" aria-label="فتح القائمة" onclick="toggleMenu()">☰</button>
+      <button class="hamburger" aria-label="Open Menu" onclick="toggleMenu()">☰</button>
 
-      <!-- اللغة -->
+      <!-- Language -->
       <div class="lang-switch">
-        <a href="index.html" class="active"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</a>
-        <a href="index-en.html"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</a>
+        <a href="index.html"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</a>
+        <a href="index-en.html" class="active"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</a>
       </div>
     </header>
 
-    <!-- Tabs (desktop) -->
+    <!-- Tabs -->
     <div class="tabs-wrap">
-      <div class="tabs" role="navigation" aria-label="قائمة التبويبات">
-        <a href="index.html" class="tab">الرئيسية</a>
-        <a href="oil.html" class="tab">حفر آبار نفط</a>
-        <a href="factories.html" class="tab">المصانع</a>
-        <a href="construction.html" class="tab">الإنشـاءات</a>
-        <a href="infrastructure.html" class="tab">بنية تحتية</a>
-        <a href="Elect.html" class="tab">مشاريع الكهرباء</a>
-        <a href="contact.html" class="tab active">اتصل بنا</a>
+      <div class="tabs">
+        <a href="index-en.html" class="tab">Home</a>
+        <a href="oil-en.html" class="tab">Oil & Gas Drilling</a>
+        <a href="factories-en.html" class="tab">Factories</a>
+        <a href="construction-en.html" class="tab">Construction</a>
+        <a href="infrastructure-en.html" class="tab active">Infrastructure</a>
+        <a href="Elect-en.html" class="tab">Electrical Projects</a>
+        <a href="contact-en.html" class="tab">Contact Us</a>
       </div>
     </div>
 
@@ -226,103 +201,90 @@ img{ max-width:100%; height:auto; display:block; }
 
     <!-- Sidebar (mobile) -->
     <aside id="sidebar" class="sidebar" aria-hidden="true">
-      <button class="close-btn" aria-label="اغلاق القائمة" onclick="closeMenu()">✖</button>
-      <a href="index.html" class="tab">الرئيسية</a>
-      <a href="oil.html" class="tab">حفر آبار نفط</a>
-      <a href="factories.html" class="tab">المصانع</a>
-      <a href="construction.html" class="tab">الإنشـاءات</a>
-      <a href="infrastructure.html" class="tab">بنية تحتية</a>
-      <a href="Elect.html" class="tab">مشاريع الكهرباء</a>
-      <a href="contact.html" class="tab active">اتصل بنا</a>
+      <button class="close-btn" aria-label="Close Menu" onclick="closeMenu()">✖</button>
+      <a href="index-en.html" class="tab">Home</a>
+      <a href="oil-en.html" class="tab">Oil & Gas Drilling</a>
+      <a href="factories-en.html" class="tab">Factories</a>
+      <a href="construction-en.html" class="tab">Construction</a>
+      <a href="infrastructure-en.html" class="tab active">Infrastructure</a>
+      <a href="Elect-en.html" class="tab">Electrical Projects</a>
+      <a href="contact-en.html" class="tab">Contact Us</a>
     </aside>
 
     <!-- main card -->
     <main class="main-card">
-      <h2>📞 اتصل بنا</h2>
-      <p class="note">ابعتلنا رسالتك وهنتواصل معاك خلال 24 ساعة غالبًا.</p>
+      <h3>🛣️ Safety Programs for HSE Engineers in Infrastructure Projects</h3>
+      <p><strong>Safety Programs for the infrastructure sector focus on managing risks across extended projects, accurately documenting procedures, and ensuring compliance in diverse and changing work environments.</strong></p>
 
-      <form id="contactForm">
-        <input type="text" id="name" name="name" placeholder="الاسم" required>
-        <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
-        <textarea id="message" name="message" rows="5" placeholder="رسالتك..." required></textarea>
-        <button type="submit">إرسال</button>
-      </form>
+      <p><strong>Safety Programs</strong> are specifically designed to support HSE engineers in large-scale projects spanning wide areas — where mobility between sites, multiple contractors, and centralized unified documentation are essential.</p>
 
-      <div style="margin-top:24px; padding-top:16px; border-top:1px solid #eee;">
-        <p><strong>واتساب:</strong> <a href="https://wa.me/201012345678" target="_blank" style="color:var(--accent1); text-decoration:none; font-weight:600;">01012345678</a></p>
-        <p><strong>البريد الإلكتروني:</strong> <a href="mailto:support@example.com" style="color:var(--accent1); text-decoration:none; font-weight:600;">support@example.com</a></p>
+      <p>Our programs run exclusively on <strong>Windows OS</strong>, ensuring compatibility with field devices and stable performance even under mobile working conditions or in remote areas.</p>
+
+      <h4>✅ Key Features:</h4>
+
+      <p>🔹 <strong>Powerful Centralized Electronic Archiving System</strong><br>
+      Organize and store safety files for each sector, station, or contractor — with search and filtering capabilities by location, date, or activity type.</p>
+
+      <p>🔹 <strong>Calibration & Training Certificates Management</strong><br>
+      Track validity of worker and equipment certificates across all project sites — with early alerts to avoid violations or work stoppages.</p>
+
+      <p>🔹 <strong>Daily Shift Handover Log</strong><br>
+      Document daily observations, incidents, and procedures between teams or sites — ensuring continuity of follow-up without information loss.</p>
+
+      <p>🔹 <strong>Smart Reports & Statistics</strong><br>
+      Extract analyses from stored Excel data — to understand accident rates by location, work type, or contractor — and make proactive decisions.</p>
+
+      <p>🔹 <strong>Works with Your Company’s Forms — No New Templates Forced</strong><br>
+      The program adapts to your current reporting structure — whether you work with a government entity, funding body, or internal proprietary system.</p>
+
+      <p>🔹 <strong>Easy Report Export</strong><br>
+      Export any report to <strong>Excel, Word, or PDF</strong> formats — to share with clients, consultants, or government inspection teams.</p>
+
+      <p>🔹 <strong>Database Backup & Restore</strong><br>
+      Protect your massive project data — with full export and restore capabilities at any time, even when relocating teams or changing headquarters.</p>
+
+      <p>🔹 <strong>Safety Gaps Identification</strong><br>
+      Identify recurring gaps by location or activity type — whether in equipment usage, procedures, or coordination between contractors.</p>
+
+      <p>🔹 <strong>Fully Customizable & Scalable</strong><br>
+      Whether a new site is added, regulatory requirements change, or additional reports are requested — the program adapts to your evolving project needs.</p>
+
+      <p>🔹 <strong>24/7 Technical Support</strong><br>
+      Dedicated support team available around the clock — to assist you with any malfunction or inquiry, ensuring workflow continuity at any project site.</p>
+
+      <div style="text-align:center; margin-top:28px; padding-top:16px; border-top:1px solid #eee;">
+        <p><strong>🛠️ Why Safety Programs for Infrastructure?</strong><br>
+        Because safety management in extended projects requires a centralized system — connecting sites, unifying procedures, and protecting your professional reputation.</p>
+
+        <p style="margin-top:16px;"><strong>📞 Ready to Manage Your Large Project with Confidence & Safety?</strong><br>
+        Contact us today to get a demo or customize the program for your infrastructure project.</p>
       </div>
     </main>
 
-    <!-- footer -->
-    <footer class="footer">© برامج سيفتى — كل الحقوق محفوظة 2025</footer>
+    <!-- Footer -->
+    <div class="footer">© Safety Programs — All Rights Reserved 2025</div>
   </div>
 
 <script>
-/* Sidebar toggle + accessibility + lock-scroll + close on link click */
+/* Sidebar toggle */
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
 const mobileLinks = sidebar.querySelectorAll('.tab');
-
 function openMenu(){
   sidebar.classList.add('active');
   overlay.classList.add('active');
-  sidebar.setAttribute('aria-hidden','false');
-  overlay.setAttribute('aria-hidden','false');
   document.body.classList.add('no-scroll');
 }
-
 function closeMenu(){
   sidebar.classList.remove('active');
   overlay.classList.remove('active');
-  sidebar.setAttribute('aria-hidden','true');
-  overlay.setAttribute('aria-hidden','true');
   document.body.classList.remove('no-scroll');
 }
-
 function toggleMenu(){
   if(sidebar.classList.contains('active')) closeMenu(); else openMenu();
 }
-
-/* close when clicking a link inside the sidebar */
-mobileLinks.forEach(a => a.addEventListener('click', () => {
-  closeMenu();
-}));
-
-/* ensure sidebar closed when resizing to desktop */
-window.addEventListener('resize', () => {
-  if(window.innerWidth > 880) closeMenu();
-});
-
-// contact form via Formspree
-const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'; // ← تم إزالة المسافات الزائدة
-
-document.getElementById('contactForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const data = {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
-    message: document.getElementById('message').value
-  };
-  try{
-    const res = await fetch(FORM_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
-    if(res.ok){
-      alert('✅ تم إرسال الرسالة — هنرد عليك قريب');
-      e.target.reset();
-    } else {
-      alert('❌ فشل الإرسال');
-    }
-  } catch {
-    alert('⚠️ حصل خطأ، جرب تاني');
-  }
-});
+mobileLinks.forEach(a => a.addEventListener('click', () => { closeMenu(); }));
+window.addEventListener('resize', () => { if(window.innerWidth > 880) closeMenu(); });
 </script>
 </body>
 </html>

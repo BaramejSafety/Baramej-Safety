@@ -3,20 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>برامج سيفتى - بنية تحتية</title>
-
-<!-- Cairo font -->
+<title>بنية تحتية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-<!-- Optional: Font Awesome if needed later -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pb6X6fKX0qX6QKqL0n9e5b7sK4Xx4zI9JZcKf6WQJvQ1Zg8hK7b3YQj5z3Q1p7Y6Qm+qmwfK6iXq3mT7q3QXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
 :root{
   --bg1:#071032; --bg2:#071a3a;
   --accent1:#4e54c8; --accent2:#8f94fb;
   --card:#ffffff; --muted:#6b6b83; --cta:#ff6b35;
-  --text-dark:#0b1020;
-  --muted-dark:#333;
+  --text-dark:#0b1020; --muted-dark:#333;
 }
 *{box-sizing:border-box}
 html,body{height:100%; margin:0; padding:0; -webkit-text-size-adjust:100%;}
@@ -24,7 +20,7 @@ body{
   margin:0; font-family:'Cairo', Tahoma, sans-serif;
   background: linear-gradient(180deg,var(--bg1),var(--bg2));
   color:var(--text-dark); -webkit-font-smoothing:antialiased;
-  padding:28px;
+  padding:16px;
 }
 
 /* prevent scroll when sidebar open */
@@ -33,28 +29,26 @@ body{
 /* images responsive */
 img{ max-width:100%; height:auto; display:block; }
 
-.container{ max-width:1120px; margin:0 auto; }
+/* container */
+.container{ max-width:1120px; margin:0 auto; padding:8px; }
 
 /* header */
-.header{
-  display:flex; align-items:center; justify-content:space-between;
-  gap:12px; color:white; margin-bottom:14px;
-  flex-wrap: wrap;
-}
+.header{ display:flex; align-items:center; justify-content:space-between; gap:12px; color:white; margin-bottom:14px; flex-wrap:wrap; }
 .brand{ display:flex; gap:12px; align-items:center; }
 .brand h1{ margin:0; font-size:20px; }
-.brand p{ margin:0; font-size:13px; opacity:0.92; color:rgba(255,255,255,0.85); }
+.brand p{ margin:0; font-size:13px; opacity:0.92; color:rgba(255,255,255,0.85) }
 
+/* logo */
 .logo{
-  width:64px; height:64px; border-radius:14px;
+  width:64px; height:64px; border-radius:14px; 
   background: linear-gradient(135deg,var(--accent1),var(--accent2));
-  display:flex; align-items:center; justify-content:center;
+  display:flex; align-items:center; justify-content:center; 
   box-shadow:0 10px 30px rgba(78,84,200,0.18);
   overflow:hidden;
 }
 .logo img{ width:100%; height:100%; object-fit:cover; }
 
-/* language switch — NO ACTIVE STATE */
+/* language switch */
 .lang-switch a{
   color:white; font-weight:600; margin:0 6px;
   text-decoration:none; padding:6px 8px; border-radius:6px;
@@ -65,17 +59,15 @@ img{ max-width:100%; height:auto; display:block; }
 .lang-switch a:hover{ background:rgba(255,255,255,0.08); }
 .lang-switch a.active{ background:linear-gradient(90deg,var(--accent1),var(--accent2)); }
 
-/* tabs */
+/* desktop tabs */
 .tabs-wrap{ display:flex; justify-content:center; margin-bottom:18px; }
-.tabs{
-  display:flex; flex-wrap:wrap; gap:6px; background:rgba(255,255,255,0.02);
-  padding:6px; border-radius:14px; align-items:center; justify-content:center;
-}
+.tabs{ display:flex; flex-wrap:wrap; gap:8px; background:rgba(255,255,255,0.02); padding:8px; border-radius:14px; align-items:center; justify-content:center; }
 .tab{
   background:transparent; border:none; color:white;
-  padding:12px 18px; border-radius:10px; font-size:20px;
-  cursor:pointer; font-weight:700; transition:all .18s;
-  text-decoration:none; display:inline-block;
+  padding:10px 14px; border-radius:10px;
+  font-size:16px; cursor:pointer; font-weight:700;
+  transition:all .18s; text-decoration:none;
+  display:inline-block;
 }
 .tab:hover,
 .tab.active{
@@ -142,31 +134,34 @@ img{ max-width:100%; height:auto; display:block; }
 }
 .sidebar .tab:hover{ background:rgba(255,255,255,0.03); }
 
-/* card */
-.card{
-  background:var(--card); border-radius:12px;
-  padding:16px; box-shadow:0 10px 30px rgba(2,6,23,0.06);
-  color:#0b1020; margin-bottom:18px;
+/* main card — تم التصحيح هنا */
+.main-card{
+  background:var(--card);
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+  color:var(--text-dark);
+  margin-bottom:18px;
 }
+.main-card h3{ font-size:22px; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.main-card p{ font-size:16px; margin-bottom:18px; line-height:1.6; color:var(--muted-dark); }
 
 /* footer */
-.footer{
-  text-align:center; color:rgba(255,255,255,0.6);
-  margin-top:12px; font-size:13px;
-}
+.footer{ text-align:center; color:rgba(255,255,255,0.6); margin-top:16px; font-size:13px; }
 
-/* responsive */
-@media (max-width: 768px){
+/* responsive tweaks */
+@media (max-width: 880px){
   .tabs-wrap{ display:none; }
   .hamburger{ display:block; }
+  .brand h1{ font-size:18px; }
+  .container{ padding:8px; }
 }
 </style>
 </head>
 <body>
-
   <div class="container">
 
-    <!-- header -->
+    <!-- الهيدر -->
     <header class="header">
       <div class="brand">
         <div class="logo">
@@ -178,23 +173,23 @@ img{ max-width:100%; height:auto; display:block; }
         </div>
       </div>
 
-      <!-- hamburger for mobile -->
+      <!-- hamburger (mobile) -->
       <button class="hamburger" aria-label="فتح القائمة" onclick="toggleMenu()">☰</button>
 
-      <!-- language switch — NO active class -->
+      <!-- اللغة -->
       <div class="lang-switch">
         <a href="index.html" class="active"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</a>
         <a href="index-en.html"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</a>
       </div>
     </header>
 
-    <!-- Tabs (desktop) -->
+    <!-- التابات -->
     <div class="tabs-wrap">
-      <div class="tabs" role="navigation" aria-label="قائمة التبويبات">
+      <div class="tabs">
         <a href="index.html" class="tab">الرئيسية</a>
         <a href="oil.html" class="tab">حفر آبار نفط</a>
         <a href="factories.html" class="tab">المصانع</a>
-        <a href="construction.html" class="tab">الإنشاءات</a>
+        <a href="construction.html" class="tab">الإنشـاءات</a>
         <a href="infrastructure.html" class="tab active">بنية تحتية</a>
         <a href="Elect.html" class="tab">مشاريع الكهرباء</a>
         <a href="contact.html" class="tab">اتصل بنا</a>
@@ -210,57 +205,86 @@ img{ max-width:100%; height:auto; display:block; }
       <a href="index.html" class="tab">الرئيسية</a>
       <a href="oil.html" class="tab">حفر آبار نفط</a>
       <a href="factories.html" class="tab">المصانع</a>
-      <a href="construction.html" class="tab">الإنشاءات</a>
+      <a href="construction.html" class="tab">الإنشـاءات</a>
       <a href="infrastructure.html" class="tab active">بنية تحتية</a>
       <a href="Elect.html" class="tab">مشاريع الكهرباء</a>
       <a href="contact.html" class="tab">اتصل بنا</a>
     </aside>
 
     <!-- main card -->
-    <main class="card">
-      <h3>صفحة البنية التحتية</h3>
-      <p>هنا هنضيف تفاصيل متعلقة بسلامة وإدارة مشاريع البنية التحتية، مع الأدوات الذكية لمتابعة الأعمال وتقليل المخاطر.</p>
+    <main class="main-card">
+      <h3>🛣️ برامج سيفتى لمهندسي السلامة في مشاريع البنية التحتية</h3>
+      <p><strong>حلول سيفتى لمجال البنية التحتية تركز على إدارة المخاطر في المشاريع الممتدة، وتوثيق الإجراءات بدقة، وضمان الامتثال في بيئات العمل المتنوعة والمتغيرة.</strong></p>
+
+      <p>تم تصميم <strong>برامج سيفتى</strong> خصيصًا لدعم مهندسي السلامة في المشاريع الكبرى التي تمتد على مساحات واسعة — حيث التنقل بين المواقع، وتعدد المقاولين، وضرورة التوثيق المركزي الموحد.</p>
+
+      <p>تعمل برامجنا على بيئة <strong>ويندوز فقط</strong>، لتتوافق مع أجهزة الموقع الميداني، وتضمن الأداء المستقر حتى في ظروف العمل المتنقلة أو في المناطق النائية.</p>
+
+      <h4>✅ المميزات الرئيسية:</h4>
+
+      <p>🔹 <strong>أقوى نظام أرشفة إلكتروني مركزي</strong><br>
+      نظم واحفظ ملفات السلامة لكل قطاع أو محطة أو مقاول — مع إمكانية البحث والفرز حسب الموقع، التاريخ، أو نوع النشاط.</p>
+
+      <p>🔹 <strong>إدارة شهادات المعايرة والتدريب</strong><br>
+      تابع صلاحية شهادات العمال والمعدات عبر جميع مواقع المشروع — مع تنبيهات مبكرة تجنّبك المخالفات أو توقف العمل.</p>
+
+      <p>🔹 <strong>سجل تسليم الورديات (Handover)</strong><br>
+      وثّق الملاحظات اليومية، الحوادث، والإجراءات بين الفِرق أو المواقع — لضمان استمرارية المتابعة دون فقدان للمعلومات.</p>
+
+      <p>🔹 <strong>تقارير وإحصائيات ذكية</strong><br>
+      استخرج تحليلات من بيانات Excel المخزنة — لمعرفة معدلات الحوادث حسب الموقع، نوع العمل، أو المقاول — واتخذ قرارات استباقية.</p>
+
+      <p>🔹 <strong>يعمل مع نماذج شركتك — لا يفرض نماذج جديدة</strong><br>
+      البرنامج يتكيف مع هيكل تقاريرك الحالي — سواء كنت تعمل مع هيئة حكومية، جهة تمويل، أو نظام داخلي خاص.</p>
+
+      <p>🔹 <strong>تصدير التقارير بسهولة</strong><br>
+      صدّر أي تقرير إلى صيغ <strong>Excel – Word – PDF</strong> — لمشاركته مع المالك، الاستشاري، أو فرق التفتيش الحكومية.</p>
+
+      <p>🔹 <strong>نسخ احتياطي واستعادة البيانات</strong><br>
+      احمِ بيانات مشروعك الضخم — مع إمكانية التصدير الكامل والاستعادة في أي وقت، حتى عند نقل الفريق أو تغيير المقر.</p>
+
+      <p>🔹 <strong>كشف نقاط الضعف في نظام السلامة (Safety Gaps)</strong><br>
+      حدد الثغرات المتكررة حسب الموقع أو نوع النشاط — سواء في استخدام المعدات، الإجراءات، أو التنسيق بين المقاولين.</p>
+
+      <p>🔹 <strong>قابل للتعديل والتطوير</strong><br>
+      سواء أُضيف موقع جديد، أو تغيرت متطلبات الجهة الرقابية، أو طُلب منك تقارير إضافية — البرنامج يُعدّل ليواكب متطلبات مشروعك المتطورة.</p>
+
+      <p>🔹 <strong>دعم فني مستمر</strong><br>
+      فريق دعم متخصص على مدار الساعة — لمساعدتك في أي عطل أو استفسار، حتى لا تتأثر سير العمل في أي موقع من مواقع المشروع.</p>
+
+      <div style="text-align:center; margin-top:28px; padding-top:16px; border-top:1px solid #eee;">
+        <p><strong>🛠️ لماذا برامج سيفتى للبنية التحتية؟</strong><br>
+        لأن إدارة السلامة في المشاريع الممتدة تحتاج إلى نظام مركزي — يربط بين المواقع، يوحد الإجراءات، ويحمي سمعتك المهنية.</p>
+
+        <p style="margin-top:16px;"><strong>📞 جاهز لإدارة مشروعك الكبير بثقة وأمان؟</strong><br>
+        تواصل معنا اليوم للحصول على عرض تجريبي أو تخصيص البرنامج لمشروعك في البنية التحتية.</p>
+      </div>
     </main>
 
-    <!-- footer -->
-    <footer class="footer">© برامج سيفتى — كل الحقوق محفوظة 2025</footer>
+    <!-- الفوتر -->
+    <div class="footer">© برامج سيفتى — كل الحقوق محفوظة 2025</div>
   </div>
 
 <script>
-/* Sidebar toggle + accessibility + lock-scroll + close on link click */
+/* Sidebar toggle */
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
 const mobileLinks = sidebar.querySelectorAll('.tab');
-
 function openMenu(){
   sidebar.classList.add('active');
   overlay.classList.add('active');
-  sidebar.setAttribute('aria-hidden','false');
-  overlay.setAttribute('aria-hidden','false');
   document.body.classList.add('no-scroll');
 }
-
 function closeMenu(){
   sidebar.classList.remove('active');
   overlay.classList.remove('active');
-  sidebar.setAttribute('aria-hidden','true');
-  overlay.setAttribute('aria-hidden','true');
   document.body.classList.remove('no-scroll');
 }
-
 function toggleMenu(){
   if(sidebar.classList.contains('active')) closeMenu(); else openMenu();
 }
-
-/* close when clicking a link inside the sidebar */
-mobileLinks.forEach(a => a.addEventListener('click', () => {
-  closeMenu();
-}));
-
-/* ensure sidebar closed when resizing to desktop */
-window.addEventListener('resize', () => {
-  if(window.innerWidth > 768) closeMenu();
-});
+mobileLinks.forEach(a => a.addEventListener('click', () => { closeMenu(); }));
+window.addEventListener('resize', () => { if(window.innerWidth > 880) closeMenu(); });
 </script>
 </body>
 </html>
