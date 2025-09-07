@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>برامج سيفتى — اتصل بنا</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#071032; --bg2:#071a3a;
+  --accent1:#4e54c8; --accent2:#8f94fb;
+  --card:#ffffff; --muted:#6b6b83;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:'Cairo', Tahoma, sans-serif;
+  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:white; padding:28px;
+}
+.logo{
+  width:64px; 
+  height:64px; 
+  border-radius:14px; 
+  background: linear-gradient(135deg,var(--accent1),var(--accent2));
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  box-shadow:0 10px 30px rgba(78,84,200,0.18);
+  overflow:hidden; /* يخلي الصورة متقفش برا */
+}
+
+.logo img{
+  width:100%; 
+  height:100%; 
+  object-fit:cover; /* يخلي الصورة تتمدد وتملأ المربع */
+}
+.container{ max-width:960px; margin:0 auto; }
+.header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.brand{ display:flex; align-items:center; gap:12px; }
+.logo{ width:64px; height:64px; border-radius:14px; background: linear-gradient(135deg,var(--accent1),var(--accent2));
+  display:flex; align-items:center; justify-content:center; font-weight:800; color:white; font-size:20px; box-shadow:0 10px 30px rgba(78,84,200,0.18);}
+h1{ margin:0; font-size:22px }
+p{ margin:0; font-size:14px; opacity:.85 }
+.right-actions{
+  display:flex; flex-direction:column; align-items:flex-end;
+  font-size:14px; color:white;
+}
+.lang-switch a{
+  color:white; font-weight:600; margin-left:8px;
+  text-decoration:none; padding:2px 6px; border-radius:6px;
+  transition:0.2s;
+}
+.lang-switch a:hover{ background:rgba(255,255,255,0.1); }
+.lang-switch a.active{ background:linear-gradient(90deg,var(--accent1),var(--accent2)); }
+/* tabs */
+.tabs-wrap{ display:flex; justify-content:center; margin-bottom:20px; }
+.tabs{ display:flex; gap:6px; background:rgba(255,255,255,0.05); padding:6px; border-radius:14px; align-items:center; }
+.tab{ background:transparent; border:none; color:white;
+  padding:12px 18px; border-radius:10px; font-size:18px; cursor:pointer; font-weight:700;
+  transition:all .18s; text-decoration:none;}
+.tab + .tab{ margin-right:6px; }
+.tab:hover,
+.tab.active{ background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  box-shadow:0 8px 20px rgba(78,84,200,0.18); transform:translateY(-3px); }
+
+/* contact */
+.card{ background:white; color:#0b1020; border-radius:14px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.15); }
+form{ display:flex; flex-direction:column; gap:10px; margin-top:12px; }
+input,textarea{ padding:10px; border-radius:8px; border:1px solid #ddd; font-size:15px }
+button{ background:var(--accent1); color:white; border:none; border-radius:8px; padding:12px; cursor:pointer; font-weight:700 }
+button:hover{ background:var(--accent2) }
+.note{ color:var(--muted); font-size:13px }
+.footer{ text-align:center; margin-top:20px; color:rgba(255,255,255,0.6); font-size:13px }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo">
+        <img src="images/Logo.png" alt="Safety Programs Logo"></div>
+        <div>
+          <h1>برامج سيفتى</h1>
+          <p>حلول ذكية لإدارة المشاريع والسلامة</p>
+        </div>
+      </div>
+      <div>📞 اتصل بنا</div>
+	  
+    </header>
+
+    <!-- Tabs -->
+    <div class="tabs-wrap">
+      <div class="tabs">
+        <a href="index.html" class="tab">الرئيسية</a>
+        <a href="oil.html" class="tab">حفر آبار نفط</a>
+        <a href="factories.html" class="tab">المصانع</a>
+        <a href="construction.html" class="tab">الإنشاءات</a>
+        <a href="infrastructure.html" class="tab">بنية تحتية</a>
+        <a href="Elect.html" class="tab">مشاريع الكهرباء</a>
+        <a href="contact.html" class="tab active">اتصل بنا</a>
+      </div>
+    </div>
+
+    <!-- contact content -->
+    <div class="card">
+      <h2>اتصل بنا</h2>
+      <p class="note">ابعتلنا رسالتك وهنتواصل معاك خلال 24 ساعة غالبًا.</p>
+
+      <form id="contactForm">
+        <input type="text" id="name" name="name" placeholder="الاسم" required>
+        <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
+        <textarea id="message" name="message" rows="5" placeholder="رسالتك..." required></textarea>
+        <button type="submit">إرسال</button>
+      </form>
+
+      <div style="margin-top:16px">
+        <p class="note">واتساب: <a href="https://wa.me/201012345678" target="_blank">01012345678</a></p>
+        <p class="note">البريد: support@example.com</p>
+      </div>
+    </div>
+
+    <div class="footer">© برامج سيفتى — كل الحقوق محفوظة 2025</div>
+  </div>
+
+<script>
+// contact form via Formspree
+const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+document.getElementById('contactForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    message: document.getElementById('message').value
+  };
+  try{
+    const res = await fetch(FORM_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(data)
+    });
+    if(res.ok){ alert('✅ تم إرسال الرسالة — هنرد عليك قريب'); e.target.reset(); }
+    else{ alert('❌ فشل الإرسال'); }
+  }catch{ alert('⚠️ حصل خطأ، جرب تاني'); }
+});
+</script>
+</body>
+</html>

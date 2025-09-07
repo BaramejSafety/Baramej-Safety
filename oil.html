@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>برامج سيفتى — حفر آبار نفط</title>
+
+<!-- Cairo font -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Font Awesome (optional, if you want icons later) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pb6X6fKX0qX6QKqL0n9e5b7sK4Xx4zI9JZcKf6WQJvQ1Zg8hK7b3YQj5z3Q1p7Y6Qm+qmwfK6iXq3mT7q3QXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+:root{
+  --bg1:#071032; --bg2:#071a3a;
+  --accent1:#4e54c8; --accent2:#8f94fb;
+  --card:#ffffff; --muted:#6b6b83; --cta:#ff6b35;
+  --text-dark:#0b1020;
+  --muted-dark:#333;
+}
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; padding:0; -webkit-text-size-adjust:100%;}
+body{
+  margin:0; font-family:'Cairo', Tahoma, sans-serif;
+  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text-dark); -webkit-font-smoothing:antialiased;
+  padding:28px;
+}
+
+/* prevent scroll when sidebar open */
+.no-scroll{ overflow:hidden !important; }
+
+/* images responsive */
+img{ max-width:100%; height:auto; display:block; }
+
+.container{ max-width:1120px; margin:0 auto; }
+
+/* header */
+.header{ display:flex; align-items:center; justify-content:space-between; gap:12px; color:white; margin-bottom:14px; flex-wrap:wrap; }
+.brand{ display:flex; gap:12px; align-items:center; }
+.brand h1{ margin:0; font-size:20px; }
+.brand p{ margin:0; font-size:13px; opacity:0.92; color:rgba(255,255,255,0.85) }
+
+/* logo */
+.logo{
+  width:64px; height:64px; border-radius:14px; 
+  background: linear-gradient(135deg,var(--accent1),var(--accent2));
+  display:flex; align-items:center; justify-content:center; 
+  box-shadow:0 10px 30px rgba(78,84,200,0.18);
+  overflow:hidden;
+}
+.logo img{ width:100%; height:100%; object-fit:cover; }
+
+/* language switch */
+.lang-switch a{
+  color:white; font-weight:600; margin:0 6px;
+  text-decoration:none; padding:6px 8px; border-radius:6px;
+  transition:0.18s; display:inline-flex; align-items:center; gap:8px;
+  font-size:14px;
+}
+.lang-switch img{ width:20px; height:14px; border-radius:2px; }
+.lang-switch a:hover{ background:rgba(255,255,255,0.08); }
+.lang-switch a.active{ background:linear-gradient(90deg,var(--accent1),var(--accent2)); }
+
+/* desktop tabs */
+.tabs-wrap{ display:flex; justify-content:center; margin-bottom:18px; }
+.tabs{ display:flex; flex-wrap:wrap; gap:6px; background:rgba(255,255,255,0.02); padding:6px; border-radius:14px; align-items:center; justify-content:center; }
+.tab{
+  background:transparent; border:none; color:white;
+  padding:12px 18px; border-radius:10px;
+  font-size:20px; cursor:pointer; font-weight:700;
+  transition:all .18s; text-decoration:none;
+  display:inline-block;
+}
+.tab:hover,
+.tab.active{
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  box-shadow:0 10px 30px rgba(78,84,200,0.18);
+  transform:translateY(-3px);
+}
+
+/* hamburger (mobile) */
+.hamburger{
+  display:none;
+  font-size:26px;
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+  padding:6px;
+}
+
+/* overlay */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.28s ease;
+  z-index:998;
+}
+.overlay.active{ opacity:1; pointer-events:auto; }
+
+/* sidebar */
+.sidebar{
+  position:fixed;
+  top:0; right:-280px;
+  width:260px; height:100%;
+  background:linear-gradient(180deg,var(--bg2),#06203a);
+  padding:18px;
+  box-shadow:-8px 0 24px rgba(0,0,0,0.4);
+  transition:right 0.32s cubic-bezier(.22,.9,.32,1);
+  z-index:999;
+  display:flex; flex-direction:column;
+}
+.sidebar.active{ right:0; }
+.sidebar .close-btn{
+  font-size:22px;
+  color:white;
+  background:none;
+  border:none;
+  cursor:pointer;
+  align-self:flex-end;
+  margin-bottom:8px;
+}
+.sidebar .tab{
+  color:white;
+  display:block;
+  margin:10px 0;
+  padding:10px 12px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+  text-align:right;
+  background:transparent;
+}
+.sidebar .tab:hover{ background:rgba(255,255,255,0.03); }
+
+/* main card */
+.card{
+  background:var(--card); border-radius:12px; padding:16px;
+  box-shadow:0 10px 30px rgba(2,6,23,0.06); color:#0b1020; margin-bottom:18px;
+}
+
+/* footer */
+.footer{ text-align:center; color:rgba(255,255,255,0.6); margin-top:12px; font-size:13px }
+
+/* responsive tweaks */
+@media (max-width: 768px){
+  .tabs-wrap{ display:none; }
+  .hamburger{ display:block; }
+}
+</style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo">
+          <img src="images/Logo.png" alt="Safety Programs Logo">
+        </div>
+        <div>
+          <h1>برامج سيفتى</h1>
+          <p>حلول ذكية لإدارة المشاريع والسلامة</p>
+        </div>
+      </div>
+
+      <!-- hamburger (mobile) -->
+      <button class="hamburger" aria-label="فتح القائمة" onclick="toggleMenu()">☰</button>
+
+      <div class="lang-switch">
+        <a href="index.html" class="active"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</a>
+        <a href="index-en.html"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</a>
+      </div>
+    </header>
+
+    <!-- Tabs (desktop) -->
+    <div class="tabs-wrap">
+      <div class="tabs" role="navigation" aria-label="قائمة التبويبات">
+        <a href="index.html" class="tab">الرئيسية</a>
+        <a href="oil.html" class="tab active">حفر آبار نفط</a>
+        <a href="factories.html" class="tab">المصانع</a>
+        <a href="construction.html" class="tab">الإنشاءات</a>
+        <a href="infrastructure.html" class="tab">بنية تحتية</a>
+        <a href="Elect.html" class="tab">مشاريع الكهرباء</a>
+        <a href="contact.html" class="tab">اتصل بنا</a>
+      </div>
+    </div>
+
+    <!-- overlay for sidebar -->
+    <div id="overlay" class="overlay" onclick="closeMenu()" aria-hidden="true"></div>
+
+    <!-- Sidebar (mobile) -->
+    <aside id="sidebar" class="sidebar" aria-hidden="true">
+      <button class="close-btn" aria-label="اغلاق القائمة" onclick="closeMenu()">✖</button>
+      <a href="index.html" class="tab">الرئيسية</a>
+      <a href="oil.html" class="tab active">حفر آبار نفط</a>
+      <a href="factories.html" class="tab">المصانع</a>
+      <a href="construction.html" class="tab">الإنشاءات</a>
+      <a href="infrastructure.html" class="tab">بنية تحتية</a>
+      <a href="Elect.html" class="tab">مشاريع الكهرباء</a>
+      <a href="contact.html" class="tab">اتصل بنا</a>
+    </aside>
+
+    <!-- main card (your original content preserved) -->
+   <!-- main card -->
+<main class="card">
+  <h3>⛽ برامج سيفتى لمهندسي السلامة في شركات حفر آبار النفط والغاز</h3>
+  <p><strong>(أجهزة حفر برية وبحرية)</strong></p>
+  <p>تم تصميم <strong>برامج سيفتى</strong> خصيصًا لتلبية احتياجات مهندسي السلامة والصحة المهنية العاملين في بيئات حفر النفط والغاز البرية والبحرية — حيث الدقة، والتنظيم، والتوثيق الفوري ليست رفاهية، بل ضرورة قصوى.</p>
+  <p>تعمل برامجنا على بيئة <strong>ويندوز فقط</strong>، بما يتوافق مع البنية التحتية التقنية لمعظم شركات القطاع، ويتم تحديثها باستمرار لضمان التوافق مع أحدث متطلبات السلامة المحلية والدولية.</p>
+
+  <h4>✅ المميزات الرئيسية:</h4>
+
+  <p>🔹 <strong>أقوى نظام أرشفة إلكتروني</strong><br>
+  نظام أرشفة ذكي ومرن يُصنّف ويحفظ جميع ملفات ومتطلبات السلامة وفق معايير شركتك ومتطلبات العميل — دون فوضى أو ضياع للوثائق.</p>
+
+  <p>🔹 <strong>إدارة شهادات المعايرة والتدريب</strong><br>
+  تابع تواريخ صلاحية الشهادات بدقة، وتلقّي تنبيهات مبكرة قبل انتهائها — لضمان استمرارية الامتثال والجاهزية التدريبية للفريق.</p>
+
+  <p>🔹 <strong>نظام تصاريح العمل الإلكتروني (Permit to Work)</strong><br>
+  أنشئ وتابع تصاريح العمل الخاصة بشركتك مع جميع مرفقاتها، مع إنشاء سجل تلقائي لكل تصريح — لضمان المراجعة والتتبع في أي وقت.</p>
+
+  <p>🔹 <strong>سجل تسليم الورديات اليومي (Handover)</strong><br>
+  سجّل الأنشطة اليومية، الملاحظات، والحوادث المحتملة بطريقة منظمة — لضمان استمرارية العمل ونقل المعلومات بدقة بين الفِرق.</p>
+
+  <p>🔹 <strong>تقارير وإحصائيات ذكية</strong><br>
+  استخرج إحصائيات دقيقة من البيانات المخزنة في البرنامج، وحلّل مؤشرات الأداء والمخاطر بناءً على سجلات Excel المدمجة.</p>
+
+  <p>🔹 <strong>مرن مع نماذج شركتك — لا يفرض نماذج جديدة</strong><br>
+  نحترم أنظمتك الحالية — البرنامج مصمم للعمل مع نماذج شركتك كما هي، دون إجبارك على تغيير ما هو فعّال لديك.</p>
+
+  <p>🔹 <strong>تصدير التقارير بسهولة</strong><br>
+  صدّر أي تقرير إلى صيغ <strong>Excel – Word – PDF</strong> لتشاركه مع الإدارة، العميل، أو الجهات الرقابية في ثوانٍ.</p>
+
+  <p>🔹 <strong>نسخ احتياطي واستعادة البيانات</strong><br>
+  احمِ بياناتك بأدوات تصدير واستيراد كاملة لقاعدة البيانات — مع إمكانية استعادتها في أي وقت دون فقدان للمعلومات.</p>
+
+  <p>🔹 <strong>كشف نقاط الضعف في نظام السلامة (Safety Gaps)</strong><br>
+  حدد الثغرات والمخاطر المتكررة في نظام السلامة على جهاز الحفر — واتخذ إجراءات وقائية قبل وقوع الحوادث.</p>
+
+  <p>🔹 <strong>إدارة الأنشطة اليومية لمهندسي السلامة (HSE Daily Activities)</strong><br>
+  نظّم جدول مهامك اليومي، وتتبع الإنجاز، ووثّق الملاحظات — لرفع كفاءة الفريق وضمان التغطية الشاملة.</p>
+
+  <p>🔹 <strong>نموذج فحص يومي غير تقليدي (Daily Audit Report)</strong><br>
+  برنامج فحص يومى بطريقة احترافية غير تقليدى - Daily Audit Report </p>
+
+  <p>🔹 <strong>قابل للتعديل والتطوير</strong><br>
+  ننمو معك — البرنامج يُعدّل ويطوّر ليتماشى مع متطلباتك الجديدة أو تغييرات سياسات الشركة أو العميل.</p>
+
+  <p>🔹 <strong>دعم فني مستمر</strong><br>
+  فريق دعم فني متخصص على مدار الساعة — لمساعدتك في أي استفسار أو طارئ، دون انقطاع.</p>
+
+  <h4>🛠️ لماذا برامج سيفتى؟</h4>
+  <p>لأننا نفهم طبيعة عملك في أصعب البيئات.<br>
+  لأننا لا نقدم برنامجًا — بل نقدم <strong>حلًا متكاملًا يُخفّف عنك العبء، ويرفع من كفاءة فريقك، ويضمن امتثالك الدائم</strong>.</p>
+
+  <p style="text-align:center; margin-top:24px;">
+    <strong>📞 جاهز للبدء؟</strong><br>
+    تواصل معنا اليوم لطلب عرض سعر مخصص لشركتك.
+  </p>
+</main>
+
+    <!-- footer -->
+    <footer class="footer">© برامج سيفتى — كل الحقوق محفوظة 2025</footer>
+  </div>
+
+<script>
+/* Sidebar toggle + accessibility + lock-scroll + close on link click */
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+const mobileLinks = sidebar.querySelectorAll('.tab');
+
+function openMenu(){
+  sidebar.classList.add('active');
+  overlay.classList.add('active');
+  sidebar.setAttribute('aria-hidden','false');
+  overlay.setAttribute('aria-hidden','false');
+  document.body.classList.add('no-scroll');
+}
+
+function closeMenu(){
+  sidebar.classList.remove('active');
+  overlay.classList.remove('active');
+  sidebar.setAttribute('aria-hidden','true');
+  overlay.setAttribute('aria-hidden','true');
+  document.body.classList.remove('no-scroll');
+}
+
+function toggleMenu(){
+  if(sidebar.classList.contains('active')) closeMenu(); else openMenu();
+}
+
+/* close when clicking a link inside the sidebar */
+mobileLinks.forEach(a => a.addEventListener('click', () => {
+  closeMenu();
+}));
+
+/* ensure sidebar closed when resizing to desktop */
+window.addEventListener('resize', () => {
+  if(window.innerWidth > 768) closeMenu();
+});
+</script>
+</body>
+</html>

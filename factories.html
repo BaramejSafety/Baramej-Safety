@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>برامج سيفتى — المصانع</title>
+
+<!-- Cairo font -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Font Awesome (icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+:root{
+  --bg1:#071032; --bg2:#071a3a;
+  --accent1:#4e54c8; --accent2:#8f94fb;
+  --card:#ffffff; --muted:#6b6b83; --cta:#ff6b35;
+  --text-dark:#0b1020;
+  --muted-dark:#333;
+}
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; padding:0; -webkit-text-size-adjust:100%;}
+body{
+  margin:0; font-family:'Cairo', Tahoma, sans-serif;
+  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text-dark); -webkit-font-smoothing:antialiased;
+  padding:16px;
+}
+
+/* prevent scroll when sidebar open */
+.no-scroll{ overflow:hidden !important; }
+
+/* images responsive */
+img{ max-width:100%; height:auto; display:block; }
+
+/* container */
+.container{ max-width:1120px; margin:0 auto; padding:8px; }
+
+/* header */
+.header{ display:flex; align-items:center; justify-content:space-between; gap:12px; color:white; margin-bottom:14px; flex-wrap:wrap; }
+.brand{ display:flex; gap:12px; align-items:center; }
+.brand h1{ margin:0; font-size:20px; }
+.brand p{ margin:0; font-size:13px; opacity:0.92; color:rgba(255,255,255,0.85) }
+
+/* logo */
+.logo{
+  width:64px; height:64px; border-radius:14px; 
+  background: linear-gradient(135deg,var(--accent1),var(--accent2));
+  display:flex; align-items:center; justify-content:center; 
+  box-shadow:0 10px 30px rgba(78,84,200,0.18);
+  overflow:hidden;
+}
+.logo img{ width:100%; height:100%; object-fit:cover; }
+
+/* language switch */
+.lang-switch a{
+  color:white; font-weight:600; margin:0 6px;
+  text-decoration:none; padding:6px 8px; border-radius:6px;
+  transition:0.18s; display:inline-flex; align-items:center; gap:8px;
+  font-size:14px;
+}
+.lang-switch img{ width:20px; height:14px; border-radius:2px; }
+.lang-switch a:hover{ background:rgba(255,255,255,0.08); }
+.lang-switch a.active{ background:linear-gradient(90deg,var(--accent1),var(--accent2)); }
+
+/* desktop tabs */
+.tabs-wrap{ display:flex; justify-content:center; margin-bottom:18px; }
+.tabs{ display:flex; flex-wrap:wrap; gap:8px; background:rgba(255,255,255,0.02); padding:8px; border-radius:14px; align-items:center; justify-content:center; }
+.tab{
+  background:transparent; border:none; color:white;
+  padding:10px 14px; border-radius:10px;
+  font-size:16px; cursor:pointer; font-weight:700;
+  transition:all .18s; text-decoration:none;
+  display:inline-block;
+}
+.tab:hover,
+.tab.active{
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  box-shadow:0 10px 30px rgba(78,84,200,0.18);
+  transform:translateY(-3px);
+}
+
+/* hamburger (mobile) */
+.hamburger{
+  display:none;
+  font-size:26px;
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+  padding:6px;
+}
+
+/* overlay */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.28s ease;
+  z-index:998;
+}
+.overlay.active{ opacity:1; pointer-events:auto; }
+
+/* sidebar */
+.sidebar{
+  position:fixed;
+  top:0; right:-280px;
+  width:260px; height:100%;
+  background:linear-gradient(180deg,var(--bg2),#06203a);
+  padding:18px;
+  box-shadow:-8px 0 24px rgba(0,0,0,0.4);
+  transition:right 0.32s cubic-bezier(.22,.9,.32,1);
+  z-index:999;
+  display:flex; flex-direction:column;
+}
+.sidebar.active{ right:0; }
+.sidebar .close-btn{
+  font-size:22px;
+  color:white;
+  background:none;
+  border:none;
+  cursor:pointer;
+  align-self:flex-end;
+  margin-bottom:8px;
+}
+.sidebar .tab{
+  color:white;
+  display:block;
+  margin:10px 0;
+  padding:10px 12px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+  text-align:right;
+  background:transparent;
+}
+.sidebar .tab:hover{ background:rgba(255,255,255,0.03); }
+
+/* hero section */
+.hero{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  margin-bottom:18px;
+}
+.hero-left{
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  padding:22px; border-radius:14px; color:white; box-shadow:0 12px 40px rgba(2,6,23,0.45);
+}
+.hero-left h2{ margin:0 0 10px; font-size:26px; }
+.hero-left p{ margin:8px 0 16px; font-size:15px; color:rgba(255,255,255,0.95); }
+
+/* main card */
+.main-card{
+  background:#fff; border-radius:14px; padding:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08); color:var(--text-dark);
+}
+.main-card h3{ font-size:22px; margin-bottom:12px; }
+.main-card p{ font-size:16px; margin-bottom:18px; line-height:1.6; color:var(--muted-dark); }
+
+/* footer */
+.footer{ text-align:center; color:rgba(255,255,255,0.6); margin-top:16px; font-size:13px; }
+
+/* responsive tweaks */
+@media (max-width: 880px){
+  .tabs-wrap{ display:none; }
+  .hamburger{ display:block; }
+  .brand h1{ font-size:18px; }
+  .container{ padding:8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- header -->
+  <header class="header">
+    <div class="brand">
+      <div class="logo">
+        <img src="images/Logo.png" alt="Safety Programs Logo">
+      </div>
+      <div>
+        <h1>برامج سيفتى</h1>
+        <p>حلول ذكية لإدارة المشاريع والسلامة</p>
+      </div>
+    </div>
+
+    <!-- hamburger (mobile) -->
+    <button class="hamburger" aria-label="فتح القائمة" onclick="toggleMenu()">☰</button>
+
+    <div class="lang-switch">
+        <a href="index.html" class="active"><img src="https://flagcdn.com/w20/eg.png" alt=""> العربية</a>
+        <a href="index-en.html"><img src="https://flagcdn.com/w20/gb.png" alt=""> English</a>
+      </div>
+  </header>
+
+  <!-- Tabs -->
+  <div class="tabs-wrap">
+    <div class="tabs">
+      <a href="index.html" class="tab">الرئيسية</a>
+      <a href="oil.html" class="tab">حفر آبار نفط</a>
+      <a href="factories.html" class="tab active">المصانع</a>
+      <a href="construction.html" class="tab">الإنشاءات</a>
+      <a href="infrastructure.html" class="tab">بنية تحتية</a>
+      <a href="Elect.html" class="tab">مشاريع الكهرباء</a>
+      <a href="contact.html" class="tab">اتصل بنا</a>
+    </div>
+  </div>
+
+  <!-- overlay for sidebar -->
+  <div id="overlay" class="overlay" onclick="closeMenu()" aria-hidden="true"></div>
+
+  <!-- Sidebar (mobile) -->
+  <aside id="sidebar" class="sidebar" aria-hidden="true">
+    <button class="close-btn" aria-label="اغلاق القائمة" onclick="closeMenu()">✖</button>
+    <a href="index.html" class="tab">الرئيسية</a>
+    <a href="oil.html" class="tab">حفر آبار نفط</a>
+    <a href="factories.html" class="tab active">المصانع</a>
+    <a href="construction.html" class="tab">الإنشاءات</a>
+    <a href="infrastructure.html" class="tab">بنية تحتية</a>
+    <a href="Elect.html" class="tab">مشاريع الكهرباء</a>
+    <a href="contact.html" class="tab">اتصل بنا</a>
+  </aside>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-left">
+      <h2>🏭 المصانع</h2>
+      <p>حلول سيفتى لمجال المصانع بتركز على رفع معايير السلامة وتحسين بيئة العمل بشكل احترافي.</p>
+    </div>
+  </section>
+
+  <!-- main card -->
+  <main class="main-card">
+    <h3>تفاصيل عن أنظمة المصانع</h3>
+    <p>هنا هنضيف تفاصيل عن أنظمة السلامة وإدارة المشاريع الخاصة بالمصانع، 
+      زي مراقبة المعدات، خطط الإخلاء، والتقارير الذكية لمتابعة الأداء.</p>
+
+    <ul>
+      <li><i class="fas fa-industry"></i> <span>حلول متكاملة لمتابعة العمليات داخل المصنع.</span></li>
+      <li><i class="fas fa-shield-alt"></i> <span>أنظمة إنذار مبكر وتقارير فورية.</span></li>
+      <li><i class="fas fa-people-carry"></i> <span>مراعاة سلامة العمال وتحسين ظروف العمل.</span></li>
+    </ul>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer">© برامج سيفتى — كل الحقوق محفوظة 2025</footer>
+</div>
+
+<script>
+/* Sidebar toggle */
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+const mobileLinks = sidebar.querySelectorAll('.tab');
+function openMenu(){
+  sidebar.classList.add('active');
+  overlay.classList.add('active');
+  document.body.classList.add('no-scroll');
+}
+function closeMenu(){
+  sidebar.classList.remove('active');
+  overlay.classList.remove('active');
+  document.body.classList.remove('no-scroll');
+}
+function toggleMenu(){
+  if(sidebar.classList.contains('active')) closeMenu(); else openMenu();
+}
+mobileLinks.forEach(a => a.addEventListener('click', () => { closeMenu(); }));
+window.addEventListener('resize', () => { if(window.innerWidth > 880) closeMenu(); });
+</script>
+</body>
+</html>
